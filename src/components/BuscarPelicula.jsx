@@ -10,6 +10,24 @@ function BuscarPelicula({ setPeliculaOMDB }) {
 
   const [busqueda, setBusqueda] = useState("")
 
+  // aca guardamos lo que nos devuelve la api
+  const [resultado, setResultado] = useState(null)
+
+  // funcion que busca la pelicula en la api de OMDB
+  const buscarPelicula = async () => {
+    if (busqueda === "") return  // si no escribio nada no busca
+
+    const respuesta = await fetch(`http://www.omdbapi.com/?t=${busqueda}`)
+    const data = await respuesta.json()
+
+    if (data.Response === "True") {
+      setResultado(data)
+    } else {
+      alert("No se encontro la pelicula")
+      setResultado(null)
+    }
+  }
+
   return (
     <div className="buscar-pelicula">
       <h3>Buscar pelicula</h3>
@@ -21,7 +39,21 @@ function BuscarPelicula({ setPeliculaOMDB }) {
         onChange={  (e) =>  setBusqueda(e.target.value)}
       />
 
-      <button>Buscar</button>
+      <button onClick={buscarPelicula}>Buscar</button>
+
+      {/* aca mostramos el resultado si encontro algo */}
+      {resultado && (
+        <div className="resultado-busqueda">
+          <img src={resultado.Poster} alt={resultado.Title} />
+          <h4>{resultado.Title} ({resultado.Year})</h4>
+          <p>{resultado.Plot}</p>
+          <button onClick={() => {
+            setPeliculaOMDB(resultado)
+            setResultado(null)
+            setBusqueda("")
+          }}>Agregar a mi lista</button>
+        </div>
+      )}
     </div>
   )
 }
