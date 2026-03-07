@@ -35,6 +35,61 @@ function App() {
   
   const peliculasColeccion = collection(db, "peliculas")
 
+
+  // funcion para traer todas las peliculas de firestore es async porque getDocs tarda un poco en traer los datos
+
+  const obtenerPeliculas = async () => {
+    const data = await getDocs(peliculasColeccion)
+
+
+    // Hago un .map a los docs para tener un array mas facil de usar le agregamos el id del documento porq firestore no lo mete adentro del data()
+    const listaPeliculas = data.docs.map((docu) => ({
+      ...docu.data(),
+      id: docu.id
+    }))
+    setPeliculas(listaPeliculas)
+  }
+
+  // esto se ejecuta cuando la app carga por primera vez, trae las peliculas
+  useEffect(() => {
+    obtenerPeliculas()
+  }, [])
+
+
+  // funcion para agregar una pelicula nueva a firestore
+  const agregarPelicula = async (pelicula) => {
+    await addDoc(peliculasColeccion, pelicula)
+
+    // despues de agregar volvemos a traer la lista para que se actualice
+
+    obtenerPeliculas()
+  }
+
+  // funcion para actualizar una pelicula que ya existe
+
+
+  const actualizarPelicula = async (id, nuevaData) => {
+    // creamos la referencia al documento especifico que queremos actualizar
+
+    const peliculaDoc = doc(db, "peliculas", id)
+
+      await updateDoc(peliculaDoc, nuevaData)
+    // limpiamos el estado de edicion
+
+    setPeliculaEditar(null)
+    obtenerPeliculas()
+  }
+
+  // funcion para borrar una pelicula
+  const eliminarPelicula = async (id) => {
+    const peliculaDoc = doc(db, "peliculas", id)
+    await deleteDoc(peliculaDoc)
+    
+    // recargamos la lista
+    obtenerPeliculas()
+  }
+
+
   return (
     <div className="App">
       <h1>CineLog</h1>
