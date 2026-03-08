@@ -13,6 +13,9 @@ import { db } from "./firebase/config";
 // importamos el componente de buscar pelicula
 import BuscarPelicula from "./components/BuscarPelicula";
 
+// importamos el formulario para agregar y editar peliculas
+import FormularioPelicula from "./components/FormularioPelicula";
+
 // importamos los estilos
 
 
@@ -100,6 +103,16 @@ function App() {
 
       {/* componente para buscar peliculas en la api */}
       <BuscarPelicula setPeliculaOMDB={setPeliculaOMDB} />
+
+      {/* formulario para agregar o editar peliculas */}
+      <FormularioPelicula
+        agregarPelicula={agregarPelicula}
+        actualizarPelicula={actualizarPelicula}
+        peliculaEditar={peliculaEditar}
+        setPeliculaEditar={setPeliculaEditar}
+        peliculaOMDB={peliculaOMDB}
+        setPeliculaOMDB={setPeliculaOMDB}
+      />
     </div>
   )
 }
