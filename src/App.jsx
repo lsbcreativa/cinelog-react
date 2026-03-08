@@ -10,6 +10,9 @@ import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase
 // importo la base de datos que configuramos en firebase/config.js
 import { db } from "./firebase/config";
 
+// importamos el componente de buscar pelicula
+import BuscarPelicula from "./components/BuscarPelicula";
+
 // importamos los estilos
 
 
@@ -94,6 +97,9 @@ function App() {
     <div className="App">
       <h1>CineLog</h1>
       <p>Tu catalogo de peliculas</p>
+
+      {/* componente para buscar peliculas en la api */}
+      <BuscarPelicula setPeliculaOMDB={setPeliculaOMDB} />
     </div>
   )
 }
