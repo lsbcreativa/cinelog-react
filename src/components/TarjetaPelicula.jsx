@@ -1,7 +1,7 @@
 import React from "react"
 
 // importo los iconos de react-icons para los botones de editar y eliminar
-import { FaEditar, FaTrash } from "react-icons/fa"
+import { FaEdit, FaTrash } from "react-icons/fa"
 
 // tarjeta individual de cada pelicula ca mostramos los datos y los botones para editar o eliminar
 
@@ -23,7 +23,7 @@ function TarjetaPelicula({ pelicula, eliminarPelicula, setPeliculaEditar }) {
   {/* boton para editar */}
 
         <button onClick={() => setPeliculaEditar(pelicula)}>
-          <FaEditar /> Editar
+          <FaEdit /> Editar
         </button>
 
         {/* boton para eliminar */}
