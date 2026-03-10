@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './BuscarPelicula.css'
 
 // este componente es para buscar peliculas en la API de OMDB ecibe setPeliculaOMDB que es la funcion para guardar la pelicula encontrada en el estado del App
 

@@ -1,1 +1,67 @@
+/* estilos del buscador de peliculas */
 
+.buscar-pelicula {
+  background-color: #16213e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.buscar-pelicula h3 {
+  margin-bottom: 15px;
+  color: #e94560;
+}
+
+/* el input donde escribis el nombre de la pelicula */
+.buscar-pelicula input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #0f3460;
+  color: #eee;
+  font-size: 14px;
+}
+
+/* boton de buscar */
+.buscar-pelicula button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buscar-pelicula button:hover {
+  background-color: #c73652;
+}
+
+
+/* aca es donde se muestra el resultado de la busqueda */
+.resultado-busqueda {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #0f3460;
+  border-radius: 8px;
+}
+
+/* la imagen del poster que no sea tan grande */
+.resultado-busqueda img {
+  max-width: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.resultado-busqueda h4 {
+  color: #e94560;
+  margin-bottom: 8px;
+}
+
+.resultado-busqueda p {
+  color: #ccc;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
