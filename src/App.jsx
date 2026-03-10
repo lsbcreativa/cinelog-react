@@ -37,8 +37,7 @@ function App() {
 
   const [peliculaEditar, setPeliculaEditar] = useState(null)
 
-  // aca guardamos la pelicula que buscamos en la api de OMDB
-  const [peliculaOMDB, setPeliculaOMDB] = useState(null)
+
 
   // esta es la referencia a la coleccion "peliculas" en firestore...es como decirle "quiero trabajar con esta coleccion"
   
@@ -107,15 +106,14 @@ function App() {
       {/* componente para buscar peliculas en la api */}
       <BuscarPelicula agregarPelicula={agregarPelicula} />
 
-      {/* formulario para agregar o editar peliculas */}
-      <FormularioPelicula
-        agregarPelicula={agregarPelicula}
-        actualizarPelicula={actualizarPelicula}
-        peliculaEditar={peliculaEditar}
-        setPeliculaEditar={setPeliculaEditar}
-        peliculaOMDB={peliculaOMDB}
-        setPeliculaOMDB={setPeliculaOMDB}
-      />
+      {/* el formulario solo aparece cuando estamos editando una pelicula */}
+      {peliculaEditar && (
+        <FormularioPelicula
+          actualizarPelicula={actualizarPelicula}
+          peliculaEditar={peliculaEditar}
+          setPeliculaEditar={setPeliculaEditar}
+        />
+      )}
 
       {/* aca mostramos la lista de peliculas que tenemos guardadas */}
       <ListaPeliculas
