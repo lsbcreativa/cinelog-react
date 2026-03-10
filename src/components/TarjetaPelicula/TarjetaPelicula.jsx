@@ -38,7 +38,7 @@ function TarjetaPelicula({ pelicula, eliminarPelicula, setPeliculaEditar, actual
           className={pelicula.estado === "Vista" ? "btn-vista" : "btn-por-ver"}
           onClick={() => {
             const nuevoEstado = pelicula.estado === "Por ver" ? "Vista" : "Por ver"
-            actualizarPelicula(pelicula.id, { ...pelicula, estado: nuevoEstado, id: undefined })
+            actualizarPelicula(pelicula.id, { titulo: pelicula.titulo, descripcion: pelicula.descripcion, estado: nuevoEstado, poster: pelicula.poster })
           }}
         >
           <FaCheck /> {pelicula.estado === "Por ver" ? "Ya la vi" : "No la vi"}

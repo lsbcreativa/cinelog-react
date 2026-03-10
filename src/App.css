@@ -13,12 +13,16 @@ body {
   min-height: 100vh;
 }
 
+/* el root de react tiene que ocupar todo */
+#root {
+  width: 100%;
+}
 
 /* contenedor principal de la app */
 .App {
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
 }
 
