@@ -1,1 +1,21 @@
+/* estilos de la lista de peliculas */
 
+.lista-peliculas {
+  margin-top: 20px;
+}
+
+/* los titulos de cada seccion (por ver y ya vistas) */
+.lista-peliculas h3 {
+  color: #e94560;
+  margin-bottom: 15px;
+  margin-top: 25px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 8px;
+}
+
+/* el mensajito cuando no hay peliculas */
+.lista-peliculas p {
+  color: #888;
+  font-style: italic;
+  margin-bottom: 15px;
+}

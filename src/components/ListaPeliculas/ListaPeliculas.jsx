@@ -2,6 +2,7 @@ import React from "react"
 
 // importamos la tarjeta de pelicula
 import TarjetaPelicula from "../TarjetaPelicula/TarjetaPelicula"
+import './ListaPeliculas.css'
 
   // este componente recibe el array de peliculas y las muestra en dos listas separadas
 

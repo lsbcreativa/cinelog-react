@@ -1,1 +1,53 @@
+/* estilos del formulario de editar pelicula */
 
+.formulario-pelicula {
+  background-color: #16213e;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: 2px solid #e94560;
+}
+
+.formulario-pelicula h3 {
+  color: #e94560;
+  margin-bottom: 15px;
+}
+
+/* los inputs y el textarea */
+.formulario-pelicula input,
+.formulario-pelicula textarea,
+.formulario-pelicula select {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #0f3460;
+  color: #eee;
+  font-size: 14px;
+}
+
+.formulario-pelicula textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+/* botones de actualizar y cancelar */
+.formulario-pelicula button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  background-color: #e94560;
+}
+
+/* el boton de cancelar un poquito diferente */
+.formulario-pelicula button:last-child {
+  background-color: #555;
+}
+
+.formulario-pelicula button:hover {
+  opacity: 0.8;
+}

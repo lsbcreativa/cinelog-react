@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
+import './FormularioPelicula.css'
 
 
 // este formulario ahora solo se usa para editar peliculas
