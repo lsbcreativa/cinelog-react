@@ -35,6 +35,19 @@ npm run dev
 
 4. Abrir en el navegador la url que te da la terminal
 
+## Peliculas que podes buscar de ejemplo
+
+La app usa la API de OMDB asi que podes buscar peliculas en ingles. Algunas que funcionan seguro:
+
+- Batman
+- Inception
+- Titanic
+- The Matrix
+- Avengers
+- Interstellar
+- Jurassic Park
+- The Godfather
+
 ## Hecho por
 
 Daniel Andrés Sánchez Botta - Bootcamp BTech 2026
