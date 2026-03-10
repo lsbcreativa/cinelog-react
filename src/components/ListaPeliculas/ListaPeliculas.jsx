@@ -3,27 +3,48 @@ import React from "react"
 // importamos la tarjeta de pelicula
 import TarjetaPelicula from "../TarjetaPelicula/TarjetaPelicula"
 
-  // este componente recibe el array de peliculas y las muestra en una lista ambien recibe las funciones de eliminar y editar para pasarselas a cada tarjeta
+  // este componente recibe el array de peliculas y las muestra en dos listas separadas
 
 function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actualizarPelicula }) {
 
+  // separamos las peliculas en dos grupos: las que no vimos y las que ya vimos
+  const porVer = peliculas.filter((peli) => peli.estado === "Por ver")
+  const yaVistas = peliculas.filter((peli) => peli.estado === "Vista")
+
   return (
     <div className="lista-peliculas">
-      <h3>Mis peliculas</h3>
 
-      {   /* recorremos el array de peliculas y por cada una renderizamos una TarjetaPelicula */}
+      {/* seccion de peliculas por ver */}
+      <h3>Peliculas por ver ({porVer.length})</h3>
 
-  {peliculas.map((pelicula) => (
+      {porVer.length === 0 && <p>No tenes peliculas pendientes</p>}
+
+      {porVer.map((pelicula) => (
         <TarjetaPelicula
             key={pelicula.id}
         pelicula={pelicula}
           eliminarPelicula={eliminarPelicula}
           setPeliculaEditar={setPeliculaEditar}
           actualizarPelicula={actualizarPelicula}
-
         />
-      ))
-      }
+      ))}
+
+
+      {/* seccion de peliculas ya vistas */}
+      <h3>Peliculas ya vistas ({yaVistas.length})</h3>
+
+      {yaVistas.length === 0 && <p>Todavia no viste ninguna pelicula</p>}
+
+      {yaVistas.map((pelicula) => (
+        <TarjetaPelicula
+            key={pelicula.id}
+        pelicula={pelicula}
+          eliminarPelicula={eliminarPelicula}
+          setPeliculaEditar={setPeliculaEditar}
+          actualizarPelicula={actualizarPelicula}
+        />
+      ))}
+
     </div>
   )
 }
