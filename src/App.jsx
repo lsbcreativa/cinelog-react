@@ -16,6 +16,9 @@ import BuscarPelicula from "./components/BuscarPelicula";
 // importamos el formulario para agregar y editar peliculas
 import FormularioPelicula from "./components/FormularioPelicula";
 
+// importamos la lista de peliculas
+import ListaPeliculas from "./components/ListaPeliculas";
+
 // importamos los estilos
 
 
@@ -112,6 +115,13 @@ function App() {
         setPeliculaEditar={setPeliculaEditar}
         peliculaOMDB={peliculaOMDB}
         setPeliculaOMDB={setPeliculaOMDB}
+      />
+
+      {/* aca mostramos la lista de peliculas que tenemos guardadas */}
+      <ListaPeliculas
+        peliculas={peliculas}
+        eliminarPelicula={eliminarPelicula}
+        setPeliculaEditar={setPeliculaEditar}
       />
     </div>
   )
