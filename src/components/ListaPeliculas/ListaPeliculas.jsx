@@ -19,7 +19,7 @@ function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actual
       <div className="seccion-lista">
         <h3>Peliculas por ver ({porVer.length})</h3>
 
-        {porVer.length === 0 && <p>No tenes peliculas pendientes</p>}
+        {porVer.length === 0 && <p>No tienes peliculas pendientes para ver</p>}
 
         {porVer.map((pelicula) => (
           <TarjetaPelicula
