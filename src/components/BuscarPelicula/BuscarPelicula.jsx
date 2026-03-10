@@ -3,7 +3,7 @@ import { useState } from "react";
 
 // este componente es para buscar peliculas en la API de OMDB ecibe setPeliculaOMDB que es la funcion para guardar la pelicula encontrada en el estado del App
 
-function BuscarPelicula({ setPeliculaOMDB }) {
+function BuscarPelicula({ agregarPelicula }) {
 
 
   // estado para guardar lo que escribe el usuario en el input
@@ -48,7 +48,14 @@ function BuscarPelicula({ setPeliculaOMDB }) {
           <h4>{resultado.Title} ({resultado.Year})</h4>
           <p>{resultado.Plot}</p>
           <button onClick={() => {
-            setPeliculaOMDB(resultado)
+            // armamos el objeto de la pelicula con los datos de la api
+            const nuevaPelicula = {
+              titulo: resultado.Title,
+              descripcion: resultado.Plot,
+              estado: "Por ver",
+              poster: resultado.Poster
+            }
+            agregarPelicula(nuevaPelicula)
             setResultado(null)
             setBusqueda("")
           }}>Agregar a mi lista</button>

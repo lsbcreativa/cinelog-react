@@ -105,7 +105,7 @@ function App() {
       <p>Tu catalogo de peliculas</p>
 
       {/* componente para buscar peliculas en la api */}
-      <BuscarPelicula setPeliculaOMDB={setPeliculaOMDB} />
+      <BuscarPelicula agregarPelicula={agregarPelicula} />
 
       {/* formulario para agregar o editar peliculas */}
       <FormularioPelicula
