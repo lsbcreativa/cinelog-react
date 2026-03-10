@@ -120,6 +120,7 @@ function App() {
         peliculas={peliculas}
         eliminarPelicula={eliminarPelicula}
         setPeliculaEditar={setPeliculaEditar}
+        actualizarPelicula={actualizarPelicula}
       />
     </div>
   )

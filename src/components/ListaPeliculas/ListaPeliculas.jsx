@@ -5,7 +5,7 @@ import TarjetaPelicula from "../TarjetaPelicula/TarjetaPelicula"
 
   // este componente recibe el array de peliculas y las muestra en una lista ambien recibe las funciones de eliminar y editar para pasarselas a cada tarjeta
 
-function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar }) {
+function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actualizarPelicula }) {
 
   return (
     <div className="lista-peliculas">
@@ -19,6 +19,7 @@ function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar }) {
         pelicula={pelicula}
           eliminarPelicula={eliminarPelicula}
           setPeliculaEditar={setPeliculaEditar}
+          actualizarPelicula={actualizarPelicula}
 
         />
       ))
