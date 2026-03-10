@@ -1,7 +1,7 @@
 import React from "react"
 
 // importamos la tarjeta de pelicula
-import TarjetaPelicula from "./TarjetaPelicula"
+import TarjetaPelicula from "../TarjetaPelicula/TarjetaPelicula"
 
   // este componente recibe el array de peliculas y las muestra en una lista ambien recibe las funciones de eliminar y editar para pasarselas a cada tarjeta
 

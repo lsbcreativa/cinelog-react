@@ -79,7 +79,7 @@ function FormularioPelicula({ agregarPelicula, actualizarPelicula, peliculaEdita
       <select value={estado} onChange={(e) => setEstado(e.target.value)}>
 
         <option value="Por ver">Por ver</option>
-        
+
         <option value="Vista">Vista</option>
       </select>
 

@@ -11,13 +11,13 @@ import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase
 import { db } from "./firebase/config";
 
 // importamos el componente de buscar pelicula
-import BuscarPelicula from "./components/BuscarPelicula";
+import BuscarPelicula from "./components/BuscarPelicula/BuscarPelicula";
 
 // importamos el formulario para agregar y editar peliculas
-import FormularioPelicula from "./components/FormularioPelicula";
+import FormularioPelicula from "./components/FormularioPelicula/FormularioPelicula";
 
 // importamos la lista de peliculas
-import ListaPeliculas from "./components/ListaPeliculas";
+import ListaPeliculas from "./components/ListaPeliculas/ListaPeliculas";
 
 // importamos los estilos
 
