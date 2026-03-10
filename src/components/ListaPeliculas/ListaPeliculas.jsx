@@ -16,35 +16,38 @@ function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actual
     <div className="lista-peliculas">
 
       {/* seccion de peliculas por ver */}
-      <h3>Peliculas por ver ({porVer.length})</h3>
+      <div className="seccion-lista">
+        <h3>Peliculas por ver ({porVer.length})</h3>
 
-      {porVer.length === 0 && <p>No tenes peliculas pendientes</p>}
+        {porVer.length === 0 && <p>No tenes peliculas pendientes</p>}
 
-      {porVer.map((pelicula) => (
-        <TarjetaPelicula
-            key={pelicula.id}
-        pelicula={pelicula}
-          eliminarPelicula={eliminarPelicula}
-          setPeliculaEditar={setPeliculaEditar}
-          actualizarPelicula={actualizarPelicula}
-        />
-      ))}
-
+        {porVer.map((pelicula) => (
+          <TarjetaPelicula
+              key={pelicula.id}
+          pelicula={pelicula}
+            eliminarPelicula={eliminarPelicula}
+            setPeliculaEditar={setPeliculaEditar}
+            actualizarPelicula={actualizarPelicula}
+          />
+        ))}
+      </div>
 
       {/* seccion de peliculas ya vistas */}
-      <h3>Peliculas ya vistas ({yaVistas.length})</h3>
+      <div className="seccion-lista">
+        <h3>Peliculas ya vistas ({yaVistas.length})</h3>
 
-      {yaVistas.length === 0 && <p>Todavia no viste ninguna pelicula</p>}
+        {yaVistas.length === 0 && <p>Todavia no viste ninguna pelicula</p>}
 
-      {yaVistas.map((pelicula) => (
-        <TarjetaPelicula
-            key={pelicula.id}
-        pelicula={pelicula}
-          eliminarPelicula={eliminarPelicula}
-          setPeliculaEditar={setPeliculaEditar}
-          actualizarPelicula={actualizarPelicula}
-        />
-      ))}
+        {yaVistas.map((pelicula) => (
+          <TarjetaPelicula
+              key={pelicula.id}
+          pelicula={pelicula}
+            eliminarPelicula={eliminarPelicula}
+            setPeliculaEditar={setPeliculaEditar}
+            actualizarPelicula={actualizarPelicula}
+          />
+        ))}
+      </div>
 
     </div>
   )

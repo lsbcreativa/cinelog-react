@@ -20,7 +20,7 @@ body {
 
 /* contenedor principal de la app */
 .App {
-  max-width: 700px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
   text-align: center;

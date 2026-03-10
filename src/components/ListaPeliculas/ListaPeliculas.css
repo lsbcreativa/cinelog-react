@@ -2,6 +2,14 @@
 
 .lista-peliculas {
   margin-top: 20px;
+  /* ponemos las dos secciones una al lado de la otra */
+  display: flex;
+  gap: 20px;
+}
+
+/* cada seccion ocupa la mitad */
+.seccion-lista {
+  flex: 1;
 }
 
 /* los titulos de cada seccion (por ver y ya vistas) */
