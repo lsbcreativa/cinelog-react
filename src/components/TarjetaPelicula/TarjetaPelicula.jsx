@@ -2,6 +2,7 @@ import React from "react"
 
 // importo los iconos de react-icons para los botones de editar y eliminar
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa"
+import './TarjetaPelicula.css'
 
 // tarjeta individual de cada pelicula ca mostramos los datos y los botones para editar o eliminar
 
