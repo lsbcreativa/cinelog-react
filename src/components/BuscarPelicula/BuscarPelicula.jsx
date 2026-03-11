@@ -18,7 +18,7 @@ function BuscarPelicula({ agregarPelicula }) {
   const buscarPelicula = async () => {
     if (busqueda === "") return  // si no escribio nada no busca
 
-    const respuesta = await fetch(`http://www.omdbapi.com/?t=${busqueda}&apikey=e65b8b0a`)
+    const respuesta = await fetch(`https://www.omdbapi.com/?t=${busqueda}&apikey=e65b8b0a`)
     const data = await respuesta.json()
 
     if (data.Response === "True") {
