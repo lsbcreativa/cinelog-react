@@ -5,18 +5,23 @@
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 .buscar-pelicula h3 {
-  margin-bottom: 15px;
+  width: 100%;
+  margin-bottom: 5px;
   color: #e94560;
 }
 
 /* el input donde escribis el nombre de la pelicula */
 .buscar-pelicula input {
   padding: 10px;
-  width: 100%;
-  max-width: 300px;
+  flex: 1;
+  min-width: 200px;
   border: 1px solid #555;
   border-radius: 5px;
   background-color: #0f3460;
@@ -27,7 +32,6 @@
 /* boton de buscar */
 .buscar-pelicula button {
   padding: 10px 20px;
-  margin-left: 10px;
   background-color: #e94560;
   color: white;
   border: none;
@@ -43,6 +47,7 @@
 
 /* aca es donde se muestra el resultado de la busqueda */
 .resultado-busqueda {
+  width: 100%;
   margin-top: 20px;
   padding: 15px;
   background-color: #0f3460;
