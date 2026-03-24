@@ -1,32 +1,24 @@
-import React from "react";
-import { useState } from "react";
+import React from "react"
+import useBuscarPelicula from "../../hooks/useBuscarPelicula"
+import Boton from "../Boton/Boton"
+import Spinner from "../Spinner/Spinner"
 import './BuscarPelicula.css'
 
-// este componente es para buscar peliculas en la API de OMDB ecibe setPeliculaOMDB que es la funcion para guardar la pelicula encontrada en el estado del App
-
+// componente para buscar peliculas en la API de OMDB
 function BuscarPelicula({ agregarPelicula }) {
+  const { busqueda, setBusqueda, resultado, buscarPelicula, limpiar, buscando } = useBuscarPelicula()
 
-
-  // estado para guardar lo que escribe el usuario en el input
-
-  const [busqueda, setBusqueda] = useState("")
-
-  // aca guardamos lo que nos devuelve la api
-  const [resultado, setResultado] = useState(null)
-
-  // funcion que busca la pelicula en la api de OMDB
-  const buscarPelicula = async () => {
-    if (busqueda === "") return  // si no escribio nada no busca
-
-    const respuesta = await fetch(`https://www.omdbapi.com/?t=${busqueda}&apikey=e65b8b0a`)
-    const data = await respuesta.json()
-
-    if (data.Response === "True") {
-      setResultado(data)
-    } else {
-      alert("No se encontro la pelicula")
-      setResultado(null)
+  // arma el objeto de la pelicula y la agrega a la lista
+  const handleAgregar = () => {
+    const nuevaPelicula = {
+      titulo: resultado.Title,
+      descripcion: resultado.Plot,
+      estado: "Por ver",
+      poster: resultado.Poster,
+      rating: 0
     }
+    agregarPelicula(nuevaPelicula)
+    limpiar()
   }
 
   return (
@@ -35,35 +27,31 @@ function BuscarPelicula({ agregarPelicula }) {
 
       <input
         type="text"
-    placeholder="Escribe el nombre de la pelicula..."
+        placeholder="Escribe el nombre de la pelicula..."
         value={busqueda}
-        onChange={  (e) =>  setBusqueda(e.target.value)}
+        onChange={(e) => setBusqueda(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && buscarPelicula()}
       />
 
-      <button onClick={buscarPelicula}>Buscar</button>
+      <Boton onClick={buscarPelicula} texto="Buscar" className="boton-primario" />
+
+      {/* spinner mientras busca */}
+      {buscando && <Spinner texto="Buscando pelicula..." />}
 
       {/* aca mostramos el resultado si encontro algo */}
-      {resultado && (
+      {!buscando && resultado && (
         <div className="resultado-busqueda">
           <img src={resultado.Poster} alt={resultado.Title} />
-          <h4>{resultado.Title} ({resultado.Year})</h4>
-          <p>{resultado.Plot}</p>
-          <button onClick={() => {
-            // armamos el objeto de la pelicula con los datos de la api
-            const nuevaPelicula = {
-              titulo: resultado.Title,
-              descripcion: resultado.Plot,
-              estado: "Por ver",
-              poster: resultado.Poster
-            }
-            agregarPelicula(nuevaPelicula)
-            setResultado(null)
-            setBusqueda("")
-          }}>Agregar a mi lista</button>
+          <div className="resultado-info">
+            <h4>{resultado.Title}</h4>
+            <span className="resultado-year">{resultado.Year}</span>
+            <p>{resultado.Plot}</p>
+            <Boton onClick={handleAgregar} texto="Agregar a mi lista" className="boton-primario" />
+          </div>
         </div>
       )}
     </div>
   )
 }
 
-export default BuscarPelicula;
+export default BuscarPelicula

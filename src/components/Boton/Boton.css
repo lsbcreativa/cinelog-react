@@ -1,0 +1,54 @@
+/* boton reutilizable */
+.boton {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.boton:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.boton:active {
+  transform: translateY(0);
+}
+
+.boton-icono {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+
+.boton-editar {
+  background-color: #238636;
+}
+
+.boton-eliminar {
+  background-color: #da3633;
+}
+
+.boton-primario {
+  background-color: #e94560;
+}
+
+.boton-secundario {
+  background-color: #30363d;
+}
+
+.boton-por-ver {
+  background-color: #238636;
+}
+
+.boton-vista {
+  background-color: #1f6feb;
+}

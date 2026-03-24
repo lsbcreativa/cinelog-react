@@ -1,41 +1,200 @@
-/* reseteo basico para que no haya estilos raros del navegador */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* estilos generales del body */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #1a1a2e;
-  color: #eee;
+  font-family: 'Inter', sans-serif;
+  background-color: #0d1117;
+  color: #e6edf3;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* el root de react tiene que ocupar todo */
 #root {
   width: 100%;
+  min-height: 100vh;
 }
 
-/* contenedor principal de la app */
 .App {
-  max-width: 1000px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 50px 24px 30px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.app-header {
+  margin-bottom: 40px;
   text-align: center;
 }
 
-/* titulo principal */
-.App h1 {
-  font-size: 2.5rem;
-  color: #e94560;
-  margin-bottom: 5px;
+/* ===== MARQUESINA DE CINE ===== */
+.marquee {
+  position: relative;
+  display: inline-block;
+  background-color: #0a0a12;
+  border: 3px solid #c9a227;
+  border-radius: 10px;
+  padding: 28px 50px;
+  margin: 0 auto 16px;
+  box-shadow: 0 0 30px rgba(201, 162, 39, 0.15), inset 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
-/* subtitulo */
-.App > p {
-  color: #aaa;
-  margin-bottom: 30px;
+.marquee h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.4);
+  position: relative;
+  z-index: 1;
+}
+
+.marquee h1 span {
+  color: #e94560;
+}
+
+/* luces individuales (bombillas) */
+.marquee-luces span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #c9a227;
+  box-shadow: 0 0 6px #c9a227, 0 0 12px rgba(201, 162, 39, 0.4);
+  animation: parpadeo 1.5s ease-in-out infinite alternate;
+}
+
+/* animacion de las luces */
+@keyframes parpadeo {
+  0% {
+    background-color: #c9a227;
+    box-shadow: 0 0 6px #c9a227, 0 0 14px rgba(201, 162, 39, 0.5);
+    opacity: 1;
+  }
+  50% {
+    background-color: #8a6d14;
+    box-shadow: 0 0 2px #8a6d14;
+    opacity: 0.4;
+  }
+  100% {
+    background-color: #f5d442;
+    box-shadow: 0 0 8px #f5d442, 0 0 18px rgba(245, 212, 66, 0.6);
+    opacity: 1;
+  }
+}
+
+/* fila de luces arriba */
+.marquee-luces-top {
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* fila de luces abajo */
+.marquee-luces-bottom {
+  position: absolute;
+  bottom: -5px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* luces del lado izquierdo */
+.marquee-luces-left {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: -5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* luces del lado derecho */
+.marquee-luces-right {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  right: -5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* responsive marquee */
+@media (max-width: 600px) {
+  .marquee {
+    padding: 22px 30px;
+  }
+
+  .marquee h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+
+  .marquee-luces span {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+.app-subtitulo {
+  color: #8b949e;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.app-descripcion {
+  color: #484f58;
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+/* ===== FOOTER ===== */
+.app-footer {
+  margin-top: auto;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-top: 1px solid #21262d;
+}
+
+.app-footer p {
+  color: #484f58;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.app-footer a {
+  color: #e94560;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-tech {
+  margin-top: 4px;
+  font-size: 0.7rem !important;
+  color: #30363d !important;
+}
+
+/* transiciones globales */
+input, textarea, select, button {
+  transition: all 0.2s ease;
 }

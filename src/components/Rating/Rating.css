@@ -1,0 +1,28 @@
+.rating {
+  display: inline-flex;
+  gap: 3px;
+  margin: 6px 0;
+}
+
+.rating-estrella {
+  font-size: 16px;
+  color: #30363d;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.rating-estrella:hover {
+  transform: scale(1.15);
+}
+
+.rating-estrella.activa {
+  color: #f0883e;
+}
+
+.rating-estrella.readonly {
+  cursor: default;
+}
+
+.rating-estrella.readonly:hover {
+  transform: none;
+}

@@ -1,14 +1,17 @@
 import React from "react"
-
-// importamos la tarjeta de pelicula
 import TarjetaPelicula from "../TarjetaPelicula/TarjetaPelicula"
+import Spinner from "../Spinner/Spinner"
 import './ListaPeliculas.css'
 
-  // este componente recibe el array de peliculas y las muestra en dos listas separadas
+// este componente recibe el array de peliculas y las muestra en dos listas separadas
+function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actualizarPelicula, cargando }) {
 
-function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actualizarPelicula }) {
+  // si esta cargando mostramos el spinner
+  if (cargando) {
+    return <Spinner texto="Cargando peliculas..." />
+  }
 
-  // separamos las peliculas en dos grupos: las que no vimos y las que ya vimos
+  // separamos las peliculas en dos grupos
   const porVer = peliculas.filter((peli) => peli.estado === "Por ver")
   const yaVistas = peliculas.filter((peli) => peli.estado === "Vista")
 
@@ -23,8 +26,8 @@ function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actual
 
         {porVer.map((pelicula) => (
           <TarjetaPelicula
-              key={pelicula.id}
-          pelicula={pelicula}
+            key={pelicula.id}
+            pelicula={pelicula}
             eliminarPelicula={eliminarPelicula}
             setPeliculaEditar={setPeliculaEditar}
             actualizarPelicula={actualizarPelicula}
@@ -40,8 +43,8 @@ function ListaPeliculas({ peliculas, eliminarPelicula, setPeliculaEditar, actual
 
         {yaVistas.map((pelicula) => (
           <TarjetaPelicula
-              key={pelicula.id}
-          pelicula={pelicula}
+            key={pelicula.id}
+            pelicula={pelicula}
             eliminarPelicula={eliminarPelicula}
             setPeliculaEditar={setPeliculaEditar}
             actualizarPelicula={actualizarPelicula}

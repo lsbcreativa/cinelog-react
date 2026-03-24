@@ -1,0 +1,54 @@
+.estadisticas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-numero {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0f6fc;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #484f58;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* colores por tipo */
+.stat-pendiente .stat-numero {
+  color: #f0883e;
+}
+
+.stat-vista .stat-numero {
+  color: #3fb950;
+}
+
+@media (max-width: 600px) {
+  .estadisticas {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 16px 10px;
+  }
+
+  .stat-numero {
+    font-size: 1.5rem;
+  }
+}

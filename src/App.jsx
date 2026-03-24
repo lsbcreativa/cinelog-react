@@ -1,107 +1,63 @@
-//Arrancamos con la importación de react y los hooks que vamos a usar
-
-import React from "react";
-import { useEffect, useState } from "react";
-
-// aca importamos las funciones de firestore que necesitamos (getDocs = traer documentos, addDoc = agregar, updateDoc = actualizar, deleteDoc = eliminar)
-
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
-
-// importo la base de datos que configuramos en firebase/config.js
-import { db } from "./firebase/config";
-
-// importamos el componente de buscar pelicula
-import BuscarPelicula from "./components/BuscarPelicula/BuscarPelicula";
-
-// importamos el formulario para agregar y editar peliculas
-import FormularioPelicula from "./components/FormularioPelicula/FormularioPelicula";
-
-// importamos la lista de peliculas
-import ListaPeliculas from "./components/ListaPeliculas/ListaPeliculas";
-
-// importamos los estilos
-
-
+import React from "react"
+import usePeliculas from "./hooks/usePeliculas"
+import BuscarPelicula from "./components/BuscarPelicula/BuscarPelicula"
+import FormularioPelicula from "./components/FormularioPelicula/FormularioPelicula"
+import ListaPeliculas from "./components/ListaPeliculas/ListaPeliculas"
+import Estadisticas from "./components/Estadisticas/Estadisticas"
 import './App.css'
 
 function App() {
-
-  // aca creo los estados que voy a necesitar
-
-
-  // peliculas va a guardar la lista de peliculas que traemos de firestore
-  const [peliculas, setPeliculas] = useState([])
-
-
-  // Aqupi sabemos cual pelicula estamos editando, si no estamos editando ninguna es null
-
-  const [peliculaEditar, setPeliculaEditar] = useState(null)
-
-
-
-  // esta es la referencia a la coleccion "peliculas" en firestore...es como decirle "quiero trabajar con esta coleccion"
-  
-  const peliculasColeccion = collection(db, "peliculas")
-
-
-  // funcion para traer todas las peliculas de firestore es async porque getDocs tarda un poco en traer los datos
-
-  const obtenerPeliculas = async () => {
-    const data = await getDocs(peliculasColeccion)
-
-
-    // Hago un .map a los docs para tener un array mas facil de usar le agregamos el id del documento porq firestore no lo mete adentro del data()
-    const listaPeliculas = data.docs.map((docu) => ({
-      ...docu.data(),
-      id: docu.id
-    }))
-    setPeliculas(listaPeliculas)
-  }
-
-  // esto se ejecuta cuando la app carga por primera vez, trae las peliculas
-  useEffect(() => {
-    obtenerPeliculas()
-  }, [])
-
-
-  // funcion para agregar una pelicula nueva a firestore
-  const agregarPelicula = async (pelicula) => {
-    await addDoc(peliculasColeccion, pelicula)
-
-    // despues de agregar volvemos a traer la lista para que se actualice
-
-    obtenerPeliculas()
-  }
-
-  // funcion para actualizar una pelicula que ya existe
-
-
-  const actualizarPelicula = async (id, nuevaData) => {
-    // creamos la referencia al documento especifico que queremos actualizar
-
-    const peliculaDoc = doc(db, "peliculas", id)
-
-      await updateDoc(peliculaDoc, nuevaData)
-    // limpiamos el estado de edicion
-
-    setPeliculaEditar(null)
-    obtenerPeliculas()
-  }
-
-  // funcion para borrar una pelicula
-  const eliminarPelicula = async (id) => {
-    const peliculaDoc = doc(db, "peliculas", id)
-    await deleteDoc(peliculaDoc)
-    
-    // recargamos la lista
-    obtenerPeliculas()
-  }
-
+  const {
+    peliculas,
+    peliculaEditar,
+    setPeliculaEditar,
+    agregarPelicula,
+    actualizarPelicula,
+    eliminarPelicula,
+    cargando
+  } = usePeliculas()
 
   return (
     <div className="App">
-      <h1>CineLog</h1>
-      <p>Tu catalogo de peliculas</p>
+      <header className="app-header">
+        <div className="marquee">
+          {/* fila de luces de arriba */}
+          <div className="marquee-luces marquee-luces-top">
+            {Array.from({ length: 16 }, (_, i) => (
+              <span key={`top-${i}`} style={{ animationDelay: `${i * 0.15}s` }}></span>
+            ))}
+          </div>
+
+          {/* luces del lado izquierdo */}
+          <div className="marquee-luces marquee-luces-left">
+            {Array.from({ length: 4 }, (_, i) => (
+              <span key={`left-${i}`} style={{ animationDelay: `${(i + 16) * 0.15}s` }}></span>
+            ))}
+          </div>
+
+          <h1>Cine<span>Log</span></h1>
+
+          {/* luces del lado derecho */}
+          <div className="marquee-luces marquee-luces-right">
+            {Array.from({ length: 4 }, (_, i) => (
+              <span key={`right-${i}`} style={{ animationDelay: `${(i + 20) * 0.15}s` }}></span>
+            ))}
+          </div>
+
+          {/* fila de luces de abajo */}
+          <div className="marquee-luces marquee-luces-bottom">
+            {Array.from({ length: 16 }, (_, i) => (
+              <span key={`bottom-${i}`} style={{ animationDelay: `${(i + 24) * 0.15}s` }}></span>
+            ))}
+          </div>
+        </div>
+
+        <p className="app-subtitulo">Tu catalogo personal de peliculas y series</p>
+        <p className="app-descripcion">Busca, organiza y lleva el control de todo lo que quieras ver</p>
+      </header>
+
+      {/* estadisticas rapidas */}
+      <Estadisticas peliculas={peliculas} />
 
       {/* componente para buscar peliculas en la api */}
       <BuscarPelicula agregarPelicula={agregarPelicula} />
@@ -121,9 +77,15 @@ function App() {
         eliminarPelicula={eliminarPelicula}
         setPeliculaEditar={setPeliculaEditar}
         actualizarPelicula={actualizarPelicula}
+        cargando={cargando}
       />
+
+      <footer className="app-footer">
+        <p>Creado por <a href="https://andresbotta.dev" target="_blank" rel="noopener noreferrer">AndresBottaDev</a></p>
+        <p className="footer-tech">Hecho con React + Firebase</p>
+      </footer>
     </div>
   )
 }
 
-export default App;
+export default App
