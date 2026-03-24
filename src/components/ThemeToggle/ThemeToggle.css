@@ -1,0 +1,22 @@
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: 1px solid #30363d;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8b949e;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: #f0883e;
+  border-color: #f0883e;
+}

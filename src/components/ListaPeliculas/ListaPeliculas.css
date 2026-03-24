@@ -1,6 +1,54 @@
-/* lista de peliculas */
-.lista-peliculas {
+/* controles: filtro + ordenamiento */
+.lista-controles {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filtro-peliculas {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+
+.filtro-peliculas:focus {
+  border-color: #e94560;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.15);
+}
+
+.filtro-peliculas::placeholder {
+  color: #484f58;
+}
+
+.ordenar-peliculas {
+  padding: 10px 14px;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background-color: #0d1117;
+  color: #8b949e;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.ordenar-peliculas:focus {
+  border-color: #e94560;
+}
+
+/* contenedor principal */
+.lista-peliculas-container {
   margin-top: 32px;
+}
+
+.lista-peliculas {
   display: flex;
   gap: 24px;
 }
@@ -19,15 +67,50 @@
   font-size: 0.9rem;
 }
 
-.lista-peliculas > .seccion-lista > p {
-  color: #484f58;
-  font-style: italic;
-  margin-bottom: 15px;
-  font-size: 0.8rem;
+/* grid de tarjetas */
+.grid-peliculas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
 }
 
-@media (max-width: 600px) {
+/* boton ver mas */
+.btn-ver-mas {
+  width: 100%;
+  padding: 10px;
+  margin-top: 16px;
+  background-color: transparent;
+  border: 1px dashed #30363d;
+  border-radius: 8px;
+  color: #8b949e;
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-ver-mas:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+/* responsive */
+@media (max-width: 768px) {
   .lista-peliculas {
     flex-direction: column;
+  }
+
+  .lista-controles {
+    flex-direction: column;
+  }
+
+  .grid-peliculas {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .grid-peliculas {
+    grid-template-columns: 1fr;
   }
 }

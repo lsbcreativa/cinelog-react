@@ -26,6 +26,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* ===== HEADER ===== */
@@ -197,4 +198,97 @@ body {
 /* transiciones globales */
 input, textarea, select, button {
   transition: all 0.2s ease;
+}
+
+/* ===== LIGHT MODE ===== */
+body[data-theme="light"] {
+  background-color: #f6f8fa;
+  color: #1f2328;
+}
+
+body[data-theme="light"] .tarjeta-pelicula,
+body[data-theme="light"] .buscar-pelicula,
+body[data-theme="light"] .formulario-pelicula,
+body[data-theme="light"] .stat-card {
+  background-color: #ffffff;
+  border-color: #d0d7de;
+}
+
+body[data-theme="light"] .tarjeta-pelicula:hover {
+  border-color: #b0b8c1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .tarjeta-pelicula h4,
+body[data-theme="light"] .lista-peliculas h3,
+body[data-theme="light"] .stat-numero,
+body[data-theme="light"] .modal-mensaje {
+  color: #1f2328;
+}
+
+body[data-theme="light"] .tarjeta-descripcion,
+body[data-theme="light"] .app-subtitulo,
+body[data-theme="light"] .resultado-info p,
+body[data-theme="light"] .resultado-year {
+  color: #656d76;
+}
+
+body[data-theme="light"] .stat-label,
+body[data-theme="light"] .app-descripcion,
+body[data-theme="light"] .app-footer p,
+body[data-theme="light"] .footer-tech {
+  color: #8b949e !important;
+}
+
+body[data-theme="light"] input,
+body[data-theme="light"] textarea,
+body[data-theme="light"] select {
+  background-color: #f6f8fa;
+  border-color: #d0d7de;
+  color: #1f2328;
+}
+
+body[data-theme="light"] .marquee {
+  background-color: #1f2328;
+}
+
+body[data-theme="light"] .resultado-busqueda,
+body[data-theme="light"] .modal-caja {
+  background-color: #ffffff;
+  border-color: #d0d7de;
+}
+
+body[data-theme="light"] .resultado-info h4 {
+  color: #1f2328;
+}
+
+body[data-theme="light"] .buscar-pelicula h3 {
+  color: #1f2328;
+}
+
+body[data-theme="light"] .btn-ver-mas {
+  border-color: #d0d7de;
+  color: #656d76;
+}
+
+body[data-theme="light"] .app-footer {
+  border-top-color: #d0d7de;
+}
+
+body[data-theme="light"] .lista-peliculas h3 {
+  border-bottom-color: #d0d7de;
+}
+
+body[data-theme="light"] .theme-toggle {
+  border-color: #d0d7de;
+  color: #656d76;
+}
+
+body[data-theme="light"] .tooltip-texto {
+  background-color: #1f2328;
+  color: #f6f8fa;
+}
+
+body[data-theme="light"] .tooltip-texto::after {
+  border-top-color: #1f2328;
 }

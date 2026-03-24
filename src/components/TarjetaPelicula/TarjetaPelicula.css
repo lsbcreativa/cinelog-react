@@ -1,12 +1,15 @@
-/* tarjeta de pelicula */
+/* tarjeta de pelicula - altura uniforme */
 .tarjeta-pelicula {
   background-color: #161b22;
   border: 1px solid #21262d;
   border-radius: 10px;
-  padding: 18px;
-  margin-bottom: 12px;
+  padding: 14px;
   text-align: center;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 .tarjeta-pelicula:hover {
@@ -14,35 +17,50 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* poster fijo */
 .tarjeta-pelicula img {
-  max-width: 120px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* titulo fijo 2 lineas max */
 .tarjeta-pelicula h4 {
   color: #f0f6fc;
   margin-bottom: 4px;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 600;
+  min-height: 2.2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.tarjeta-pelicula p {
+/* descripcion siempre truncada a 2 lineas */
+.tarjeta-descripcion {
   color: #8b949e;
-  font-size: 0.78rem;
-  margin-bottom: 10px;
+  font-size: 0.7rem;
+  margin-bottom: 8px;
   line-height: 1.4;
+  min-height: 2.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* badge de estado */
 .tarjeta-pelicula .estado {
   display: inline-block;
-  padding: 3px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   background-color: rgba(233, 69, 96, 0.1);
@@ -50,10 +68,24 @@
   border: 1px solid rgba(233, 69, 96, 0.2);
 }
 
+/* espacio para rating (fijo aunque no haya) */
+.tarjeta-rating-space {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* botones al fondo */
 .botones-tarjeta {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 8px;
   flex-wrap: wrap;
+}
+
+.botones-tarjeta .boton {
+  font-size: 11px;
+  padding: 6px 10px;
 }

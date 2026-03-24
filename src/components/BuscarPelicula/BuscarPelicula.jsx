@@ -5,8 +5,8 @@ import Spinner from "../Spinner/Spinner"
 import './BuscarPelicula.css'
 
 // componente para buscar peliculas en la API de OMDB
-function BuscarPelicula({ agregarPelicula }) {
-  const { busqueda, setBusqueda, resultado, buscarPelicula, limpiar, buscando } = useBuscarPelicula()
+function BuscarPelicula({ agregarPelicula, mostrarToast }) {
+  const { busqueda, setBusqueda, resultado, buscarPelicula, limpiar, buscando } = useBuscarPelicula(mostrarToast)
 
   // arma el objeto de la pelicula y la agrega a la lista
   const handleAgregar = () => {

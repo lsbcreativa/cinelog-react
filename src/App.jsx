@@ -1,9 +1,13 @@
 import React from "react"
 import usePeliculas from "./hooks/usePeliculas"
+import useToast from "./hooks/useToast"
 import BuscarPelicula from "./components/BuscarPelicula/BuscarPelicula"
 import FormularioPelicula from "./components/FormularioPelicula/FormularioPelicula"
 import ListaPeliculas from "./components/ListaPeliculas/ListaPeliculas"
 import Estadisticas from "./components/Estadisticas/Estadisticas"
+import Toast from "./components/Toast/Toast"
+import ScrollTop from "./components/ScrollTop/ScrollTop"
+import ThemeToggle from "./components/ThemeToggle/ThemeToggle"
 import './App.css'
 
 function App() {
@@ -17,8 +21,28 @@ function App() {
     cargando
   } = usePeliculas()
 
+  const { toast, mostrarToast } = useToast()
+
+  // wrappers que muestran toast despues de cada accion
+  const handleAgregar = async (pelicula) => {
+    await agregarPelicula(pelicula)
+    mostrarToast("Pelicula agregada a tu lista!", "exito")
+  }
+
+  const handleEliminar = async (id) => {
+    await eliminarPelicula(id)
+    mostrarToast("Pelicula eliminada", "info")
+  }
+
+  const handleActualizar = async (id, data) => {
+    await actualizarPelicula(id, data)
+    mostrarToast("Pelicula actualizada", "exito")
+  }
+
   return (
     <div className="App">
+      <ThemeToggle />
+
       <header className="app-header">
         <div className="marquee">
           {/* fila de luces de arriba */}
@@ -60,12 +84,12 @@ function App() {
       <Estadisticas peliculas={peliculas} />
 
       {/* componente para buscar peliculas en la api */}
-      <BuscarPelicula agregarPelicula={agregarPelicula} />
+      <BuscarPelicula agregarPelicula={handleAgregar} mostrarToast={mostrarToast} />
 
       {/* el formulario solo aparece cuando estamos editando una pelicula */}
       {peliculaEditar && (
         <FormularioPelicula
-          actualizarPelicula={actualizarPelicula}
+          actualizarPelicula={handleActualizar}
           peliculaEditar={peliculaEditar}
           setPeliculaEditar={setPeliculaEditar}
         />
@@ -74,11 +98,17 @@ function App() {
       {/* aca mostramos la lista de peliculas que tenemos guardadas */}
       <ListaPeliculas
         peliculas={peliculas}
-        eliminarPelicula={eliminarPelicula}
+        eliminarPelicula={handleEliminar}
         setPeliculaEditar={setPeliculaEditar}
-        actualizarPelicula={actualizarPelicula}
+        actualizarPelicula={handleActualizar}
         cargando={cargando}
       />
+
+      {/* notificacion toast */}
+      <Toast mensaje={toast.mensaje} visible={toast.visible} tipo={toast.tipo} />
+
+      {/* boton scroll to top */}
+      <ScrollTop />
 
       <footer className="app-footer">
         <p>Creado por <a href="https://andresbotta.dev" target="_blank" rel="noopener noreferrer">AndresBottaDev</a></p>

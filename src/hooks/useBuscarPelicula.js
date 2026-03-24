@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 // hook personalizado que maneja la busqueda de peliculas en la API de OMDB
-function useBuscarPelicula() {
+function useBuscarPelicula(mostrarToast) {
   const [busqueda, setBusqueda] = useState("")
   const [resultado, setResultado] = useState(null)
   const [buscando, setBuscando] = useState(false)
@@ -17,7 +17,7 @@ function useBuscarPelicula() {
     if (data.Response === "True") {
       setResultado(data)
     } else {
-      alert("No se encontro la pelicula")
+      if (mostrarToast) mostrarToast("No se encontro la pelicula", "error")
       setResultado(null)
     }
     setBuscando(false)
